@@ -1,0 +1,21 @@
+Use Random Forest to prepare a model on fraud data 
+treating those who have taxable_income <= 30000 as "Risky" and others 
+are "Good"
+
+#problem solved under randome forest classroom excercise
+install.packages("randomForest")
+library(randomForest)
+
+
+model1<-randomForest(Fraud_check$Taxable.Income~.,data = Fraud_check,ntree=1000)
+
+# View the forest results.
+print(model1)
+#Imoporantce of the variable - Lower Gini
+print(importance(model1))
+#Prediction
+pred<- predict(model1,Fraud_check[,-3])
+table(pred,Fraud_check$Taxable.Income)
+
+
+and:all are good
